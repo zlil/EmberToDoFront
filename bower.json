@@ -1,0 +1,20 @@
+{
+  "name": "todo",
+  "description": "Small description for ember-to-do goes here",
+  "main": "",
+  "authors": [
+    "zlil <zlil.korman@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/zlil/EmberToDoFront",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
