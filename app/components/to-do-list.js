@@ -5,9 +5,24 @@ export default Ember.Component.extend({
   newToDoList: [],
   repo: Ember.inject.service('repo'),
   data: Ember.computed.alias('todos'),
+  totalToDo: null,
+  completedToDo: null,
+  leftToDo: null,
+  didReceiveAttrs() {
+    this._super(...arguments);
+    const todos = this.get('data');
+    this.set('totalToDo', todos.length);
+    this.totalToDo = todos.length;
+    let checkCompleted = todos.filter(function(elem) {
+        return elem.complete == 1;
+      }
+    );
+    this.completedToDo = checkCompleted.length;
+    this.leftToDo = this.totalToDo - checkCompleted.length;
+  },
   actions: {
     deleteTodo(todo) {
-      debugger;
+
       this.get('repo').delete(todo);
       let id = todo.id;
       $("#todo-"+id).remove();
@@ -62,7 +77,7 @@ export default Ember.Component.extend({
                 description = $form.find('[name="description"]').val();
            Ember.$.post('http://localhost:3232/ToDoBack/public/edit', $form.serialize())
              .then((response) => {
-              debugger;
+
                // Hide the dialog
                $form.parents('.bootbox').modal('hide');
 
