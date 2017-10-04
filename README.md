@@ -49,6 +49,4 @@ Specify what it takes to deploy your app.
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 =======
-# EmberToDoFront
-Ember To Do List
->>>>>>> b25216274b0ba64cf3d895625474d66f5bdae8c9
+
