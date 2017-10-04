@@ -1,21 +1,17 @@
-<div class="col-sm-7">
-
-  <!--<button id="checkAll" class="btn btn-success">Mark all as done</button>-->
-  <hr>
   <ul class="list-group">
     {{#each todos as |task|}}
       <li class="list-group-item row" id="todo-{{task.id}}">
         <div class="col-xs-1">
           <input type="checkbox" disabled={{task.complete}} {{action "completeTodo" task}}>
         </div>
-        <div class="col-xs-9" role="listitem"
+        <div class="col-xs-7" role="listitem"
              style="{{if task.complete "text-decoration:line-through"}}">{{task.description}}</div>
-        <div class="col-xs-1">
-          <button type="button" data-id="{{task.id}}" class="glyphicon glyphicon-pencil" style="border: none; background-color: white" {{action "editTask" task}}></button>
+        <div class="col-xs-offset-1 col-xs-1">
+          <button type="button" data-id="{{task.id}}" class="glyphicon glyphicon-pencil" style="border: none;" {{action "editTask" task}}></button>
         </div>
         <div class="col-xs-1">
           <button type="button" class="glyphicon glyphicon-remove"
-                  style="border: none; background-color: white" {{action "deleteTodo" task}}></button>
+                  style="border: none;" {{action "deleteTodo" task}}></button>
         </div>
       </li>
     {{/each}}
@@ -44,6 +40,5 @@
   </form>
 
   <div class="todo-footer">
-    <strong><span class="count-todos">{{totalToDo}}</span></strong> Items Left <strong><span class="count-todos">| {{completedToDo}}</span></strong> Completed <strong><span class="count-todos">| {{leftToDo}}</span></strong> Left
+    <strong><span class="count-todos">{{totalToDo}}</span></strong> Items Total <strong><span class="count-todos">| {{completedToDo}}</span></strong> Completed <strong><span class="count-todos">| {{leftToDo}}</span></strong> Left
   </div>
-</div>

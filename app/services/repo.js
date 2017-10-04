@@ -16,37 +16,21 @@ export default Ember.Service.extend({
     this.data = model;
     let todo = Object.assign(attrs, {id: this.data.model.length + 1});
     model.model.pushObject(todo);
-    this.persist();
     this.addToDB(todo);
     return todo;
   },
   delete(todo) {
     this.get('data').then(res => {
-      debugger;
       res.removeObject(todo);
-      this.persist();
       this.deleteFromDB(todo);
     })
-  },
-  persist() {
-    window.localStorage.setItem('todos', JSON.stringify(this.get('data').then(res => { return res }) ));
   },
   fetchData() {
     return Ember.$.get('http://localhost:3232/ToDoBack/public/')
       .then((response) => {
         let data = JSON.parse(response);
+        this.set('total', data.length)
         return data;
-        // let total = 0;
-        // data.forEach(function (item) {
-        //   if(item.complete)
-        //     ++total;
-        // })
-        // let sendData = [];
-        // sendData['data'] = data;
-        // sendData['totalLeft'] = data.length-total;
-        // this.set('data', sendData['data']);
-        // this.set('totalLeft', sendData['totalLeft']);
-        // return sendData;
       });
   },
   setComplete(todo) {
@@ -75,11 +59,9 @@ export default Ember.Service.extend({
   },
   editTodo(todo) {
     this.get('data').then(res => {
-      debugger
       this.set(res[todo.id-1].description , todo.description)
         .then( this.set('data', res) )
         .then( res => {
-        this.persist();
       })
     })
   }

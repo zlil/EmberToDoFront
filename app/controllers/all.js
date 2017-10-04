@@ -5,7 +5,6 @@ export default Ember.Controller.extend({
   newToDo: '',
   actions: {
     createTodo(e) {
-      debugger;
         let description = this.get('newToDo');
         var self = this;
         this.get('repo').add({ description: description, completed: false }, self);

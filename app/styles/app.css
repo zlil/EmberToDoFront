@@ -1,0 +1,19 @@
+.list-group-item{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#addNewToDo{
+  background: white;
+}
+
+ul li:nth-child(2n+1) {
+  background: #E2E0C4;
+}
+
+
+ul li:nth-child(2n) button{
+  background: white;
+}
